@@ -1,0 +1,290 @@
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+set $mod Mod1
+
+## font
+font pango: Noto Mono 9, Sans 9
+
+floating_modifier $mod
+hide_edge_borders none
+new_window normal
+new_float normal
+
+for_window [class="^(URxvt|XTerm)"] border pixel 1
+bindsym Control+Shift+x [class="^.*"] border toggle
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+## Rofi
+set $rofi_options -run-list-command "aliases" -run-command "/bin/bash -i -c '{cmd}'" -lines 10 -eh 1 -width 50% -padding 8 -opacity 100 -bw 0
+bindsym $mod+d exec rofi -show run $rofi_options
+bindsym $mod+Shift+h exec rofi -show ssh $rofi_options
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+ntilde focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+ntilde move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# switch workspace
+bindsym $mod+Control+j workspace prev
+bindsym $mod+Control+ntilde workspace next
+bindsym $mod+Control+Left workspace prev
+bindsym $mod+Control+Right workspace next
+
+# move containers
+bindsym $mod+Control+Shift+Left move container to workspace prev
+bindsym $mod+Control+Shift+Right move container to workspace next
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+mode "move" {
+    bindsym Up move up 25px
+    bindsym Left move left 25px
+    bindsym Down move down 25px
+    bindsym Right move right 25px
+    bindsym j move left 25px
+    bindsym k move down 25px
+    bindsym l move up 25px
+    bindsym ntilde move right 25px
+
+    bindsym $mod+m mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+m focus floating; mode "move"
+
+# make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+y focus child
+
+set $workspace1 "workspace number 1"
+set $workspace2 "workspace number 2"
+set $workspace3 "workspace number 3"
+set $workspace4 "workspace number 4"
+set $workspace5 "workspace number 5"
+set $workspace6 "workspace number 6"
+set $workspace7 "workspace number 7"
+set $workspace8 "workspace number 8"
+set $workspace9 "workspace number 9"
+set $workspace10 "workspace number 10"
+
+# switch to workspace
+bindsym $mod+1 $workspace1
+bindsym $mod+2 $workspace2
+bindsym $mod+3 $workspace3
+bindsym $mod+4 $workspace4
+bindsym $mod+5 $workspace5
+bindsym $mod+6 $workspace6
+bindsym $mod+7 $workspace7
+bindsym $mod+8 $workspace8
+bindsym $mod+9 $workspace9
+bindsym $mod+0 $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r exec "i3-msg restart"
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 2 ppt
+        bindsym k resize grow height 10 px or 2 ppt
+        bindsym l resize shrink height 10 px or 2 ppt
+        bindsym ntilde resize grow width 10 px or 2 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 2 ppt
+        bindsym Down resize grow height 10 px or 2 ppt
+        bindsym Up resize shrink height 10 px or 2 ppt
+        bindsym Right resize grow width 10 px or 2 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# bar colors
+set $bar_separator #252936
+set $bar_bg #1f222d
+set $bar_statusline #d1d4e0
+
+## workspace colors
+set $ws_focused_border #1f222d
+set $ws_focused_bg #1f222d
+set $ws_focused_text #d1d4e0
+
+set $ws_active_border #1f222d
+set $ws_active_bg #1f222d
+set $ws_active_text #828ca1
+
+set $ws_inactive_border #1f222d
+set $ws_inactive_bg #1f222d
+set $ws_inactive_text #656d7d
+
+set $ws_urgent_border #1f222d
+set $ws_urgent_bg #1f222d
+set $ws_urgent_text #ee829f
+
+bar {
+    position top
+    status_command i3blocks
+    strip_workspace_numbers yes
+    colors {
+        separator $bar_separator
+        background $bar_bg
+        statusline $bar_statusline
+        #                  border  background text
+        focused_workspace  $ws_focused_border $ws_focused_bg $ws_focused_text
+        active_workspace  $ws_active_border $ws_active_bg $ws_active_text
+        inactive_workspace  $ws_inactive_border $ws_inactive_bg $ws_inactive_text
+        urgent_workspace  $ws_urgent_border $ws_urgent_bg $ws_urgent_text
+    }
+}
+
+# windows colors
+set $active_border #1f222d
+set $active_bg #1f222d
+set $active_text #d1d4e0
+#set $active_indicator #72818f
+set $active_indicator #434c54
+set $active_child_border #1f222d
+
+set $inactive_border #252936
+set $inactive_bg #252936
+set $inactive_text #828ca1
+set $inactive_indicator #252936
+set $inactive_child_border #252936
+
+set $unfocused_border #252936
+set $unfocused_bg #252936
+set $unfocused_text #656d7d
+set $unfocused_indicator #434c54
+set $unfocused_child_border #252936
+
+set $urgent_border #72818f
+set $urgent_bg #72818f
+set $urgent_text #1f222d
+set $urgent_indicator #cbe6ff
+
+#                       border  background text    indicator
+client.focused          $active_border   $active_bg   $active_text   $active_indicator $active_child_border
+client.focused_inactive $active_border $active_bg $inactive_text $inactive_indicator $inactive_child_border
+client.unfocused        $unfocused_border $unfocused_bg $unfocused_text $unfocused_indicator $unfocused_child_border
+client.urgent           $urgent_border $urgent_bg $urgent_text $urgent_indicator
+
+## blank screen
+exec --no-startup-id xset s 180 300
+
+## notification daemon startup
+exec --no-startup-id dunst
+
+## lock screen
+set $lock_command "killall -e -u $USER -USR1 dunst && i3lock-fancy -p -f DejaVu-Sans && killall -e -u $USER -USR2 dunst"
+exec --no-startup-id xautolock -time 5 -detectsleep -locker $lock_command
+bindsym $mod+Shift+x exec --no-startup-id $lock_command
+
+## screenshot
+bindsym Print exec --no-startup-id scrot -u -z -e 'mv $f ~/Pictures/'
+bindsym Control+Print exec --no-startup-id  scrot -z -e 'mv $f ~/Pictures/'
+
+## PulseAudio
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
+
+## backlight
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+## wallpaper
+set $wallpaper /usr/local/share/backgrounds/1920x1080.png
+# lock session, since lightdm autologin is configured
+#exec --no-startup-id xsetroot -gray && feh --bg-center $wallpaper && ~/.local/bin/i3lock-dunst
+exec --no-startup-id xsetroot -gray && feh --bg-center $wallpaper
+
+## enable composition
+exec --no-startup-id compton -b
+
+## floating windows
+for_window [class="Lxappearance"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Remmina"] floating enable
+for_window [class="Galculator"] floating enable
+for_window [class="Connman"] floating enable
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down 24 px
+for_window [class="feh"] floating enable
+
+## udisks
+exec --no-startup-id udiskie --automount --notify --smart-tray &

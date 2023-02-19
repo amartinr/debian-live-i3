@@ -1,0 +1,22 @@
+body {
+	padding: 0.5em;
+	margin: 0;
+}
+
+div {
+	display: block;
+}
+
+.action .icon {
+	vertical-align: text-bottom;
+	height: 19px;
+	width: 19px;
+	margin-right: 0.25em;
+	background-color: currentColor;
+	mask-size: 100%;
+	display: inline-block;
+}
+
+.action.search {
+	padding-left: calc(0.5em + 19px + 0.25em);
+}

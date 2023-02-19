@@ -1,0 +1,8 @@
+{
+  "name": "jid1-MnnxcxisBPnSXQ@jetpack",
+  "description": "Disable welcome screen on Privacy Badger.",
+  "type": "storage",
+  "data": {
+    "showIntroPage": false
+    }
+}

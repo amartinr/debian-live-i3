@@ -1,0 +1,50 @@
+! xterm configuration
+XTerm.termName: xterm-256color
+XTerm*locale: false
+XTerm*utf8: true
+XTerm*utf8Title: true
+XTerm*eightBitInput: false
+XTerm*saveLines: 4096
+XTerm*scrollBar: false
+XTerm*borderWidth: 0
+XTerm*loginShell: false
+XTerm*visualbell: true
+XTerm*bellIsUrgent: true
+XTerm*fullscreen: never
+
+! TTF fonts
+!XTerm*faceName: LiterationMono Nerd Font
+!XTerm*faceSize: 12
+!XTerm*faceSize1: 8
+!XTerm*faceSize2: 10
+!XTerm*faceSize3: 12
+!XTerm*faceSize4: 14
+!XTerm*faceSize5: 16
+!XTerm*faceSize6: 18
+
+! Bitmap fonts
+XTerm*font: -*-tamzenforpowerline-medium-*-*-20-*-*-*-*-*-iso8859-1
+XTerm*font1: -*-tamzenforpowerline-medium-*-*-12-*-*-*-*-*-iso8859-1
+XTerm*font2: -*-tamzenforpowerline-medium-*-*-13-*-*-*-*-*-iso8859-1
+XTerm*font3: -*-tamzenforpowerline-medium-*-*-14-*-*-*-*-*-iso8859-1
+XTerm*font4: -*-tamzenforpowerline-medium-*-*-15-*-*-*-*-*-iso8859-1
+XTerm*font5: -*-tamzenforpowerline-medium-*-*-16-*-*-*-*-*-iso8859-1
+XTerm*font6: -*-tamzenforpowerline-medium-*-*-20-*-*-*-*-*-iso8859-1
+
+XTerm*allowBoldFonts: false
+
+! define chars
+XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+! open URLs
+XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]][[:xdigit:]]))+
+
+! key combos
+XTerm*translations: #override \n\
+    Ctrl <Btn4Down>: larger-vt-font() \n\
+    Ctrl <Btn5Down>: smaller-vt-font() \n\
+    Ctrl <Key>+: larger-vt-font() \n\
+    Ctrl <Key>-: smaller-vt-font() \n\
+    Shift <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY) select-start() select-end() \n\
+    Ctrl Meta <Key>V:    insert-selection(CLIPBOARD) \n\
+    Ctrl Meta <Key>C:    copy-selection(CLIPBOARD)

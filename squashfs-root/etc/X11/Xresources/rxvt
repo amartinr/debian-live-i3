@@ -2,7 +2,7 @@
 URxvt.font: xft:LiterationMono Nerd Font:regular:size=11
 URxvt.boldFont: xft:LiterationMono Nerd Font:bold:size=11
 
-!URxvt.letterSpace: -1
+URxvt.letterSpace: -1
 
 URxvt*scrollBar: false
 URxvt*internalBorder: 1
@@ -25,7 +25,7 @@ URxvt.keysym.C-minus:     font-size:decrease
 URxvt.keysym.C-plus:      font-size:increase
 URxvt.keysym.C-equal:     font-size:reset
 URxvt.keysym.C-question:  font-size:show
-URxvt.font-size.step: 4
+URxvt.font-size.step: 1
 
 URxvt*perl-ext-common: default,matcher,selection
 

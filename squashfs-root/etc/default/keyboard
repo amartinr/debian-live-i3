@@ -1,5 +1,0 @@
-XKBMODEL=pc105
-XKBLAYOUT=es
-XKBVARIANT=winkeys
-XKBOPTIONS="compose:menu,terminate:ctrl_alt_bksp"
-BACKSPACE=guess

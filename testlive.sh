@@ -13,7 +13,7 @@ case "$1" in
         sudo systemd-nspawn -a -D squashfs-root -M debian-live-11 --setenv=DISPLAY=:0 --setenv=SHELL=/bin/bash --read-only --user=root /bin/bash
     ;;
     qemu)
-        qemu-system-x86_64 -enable-kvm -m 4G -cdrom debian-live-11.6.0-amd64-custom+nonfree.iso -display gtk -vga virtio -show-cursor
+        qemu-system-x86_64 -enable-kvm -m 4G -cdrom debian-live-11.6.0-amd64-custom+nonfree.iso -display gtk,show-cursor=on -vga virtio
     ;;
     xserver)
         Xephyr -ac -screen 1360x768 -resizeable -reset :1 & sleep 1

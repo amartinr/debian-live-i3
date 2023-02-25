@@ -3,12 +3,7 @@ echo "Removing old ISO and squashfs images..."
 rm -vf debian-live-11.6.0-amd64-custom+nonfree.iso
 rm -vf live/live/filesystem.squashfs
 
-echo "Cleaning squashfs directories..."
-find squashfs-root/var/log/ -type f -delete
-rm -rvf squashfs-root/var/cache/apt/archives/{lock,partial/*}
-rm -rvf squashfs-root/var/tmp/*
-rm -rvf squashfs-root/tmp/*
-find squashfs-root/root -mindepth 1 -not -name ".bashrc" -and -not -name ".profile" -delete
+. cleanlive.sh
 
 mksquashfs squashfs-root live/live/filesystem.squashfs -b 16384 -comp lzo
 

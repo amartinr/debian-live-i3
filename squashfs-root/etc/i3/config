@@ -271,8 +271,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 ## wallpaper
 set $wallpaper /usr/local/share/backgrounds/1920x1080.png
 # lock session, since lightdm autologin is configured
-#exec --no-startup-id xsetroot -gray && feh --bg-center $wallpaper && ~/.local/bin/i3lock-dunst
-exec --no-startup-id xsetroot -gray && feh --bg-center $wallpaper
+exec --no-startup-id xsetroot -gray && feh --bg-fill $wallpaper
 
 ## enable composition
 exec --no-startup-id compton -b
